@@ -48,7 +48,8 @@ function validateEmail(){
     emailError.innerHTML = 'Email is required';
     return false;
   }
-  if(email.match(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,4}$/)){ 
+  if(!email.match(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,4}$/)){
+     emailError.innerHTML = 'enter valid email';
     //regex format match(/.../)
     return false;
   }
@@ -72,7 +73,7 @@ function validateMessage(){
 }
 
 function validateForm(){
-  if(!validateName() || !validatePhone || !validateEmail() || !validateMessage() ){
+  if(!validateName() || !validatePhone() || !validateEmail() || !validateMessage() ){
     submitError.style.display = 'block'
     submitError.innerHTML = 'Please fix error to submit';
   setTimeout(function(){ submitError.style.display = 'none'}, 3000)
